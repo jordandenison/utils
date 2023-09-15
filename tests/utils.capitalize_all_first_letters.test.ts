@@ -1,4 +1,4 @@
-import { capitalizeAllFirstLetters } from "../src"
+import { capitalizeAllFirstLetters } from '../src'
 
 test('capitalizes first letter of each word', async () => {
   const result = capitalizeAllFirstLetters('hello world')

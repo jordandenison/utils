@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../src"
+import { capitalizeFirstLetter } from '../src'
 
 test('capitalizes first letter', async () => {
   const result = capitalizeFirstLetter('hello')
