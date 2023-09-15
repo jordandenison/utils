@@ -24,6 +24,6 @@
     "typescript": "^5.2.2"
   },
   "jest": {
-    "testMatch": ["./tests/**/*.test.ts"]
+    "testMatch": ["**/tests/**/*.test.ts"]
   }
 }
