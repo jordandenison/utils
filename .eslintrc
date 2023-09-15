@@ -12,7 +12,7 @@
     }
   },
   "extends": ["plugin:import/errors", "plugin:import/warnings", "plugin:import/typescript", "prettier"],
-  "plugins": ["import", "react-hooks", "@typescript-eslint", "unused-imports"],
+  "plugins": ["import", "@typescript-eslint", "unused-imports"],
   "rules": {
     "import/no-unresolved": "off",
     "@typescript-eslint/no-explicit-any": [
@@ -54,8 +54,6 @@
     ],
     "no-extra-semi": "error",
     "no-unreachable": "error",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
     "quotes": ["error", "single"],
     "object-curly-spacing": ["error", "always"],
     "no-useless-concat": "error",
@@ -71,7 +69,7 @@
       {
         "unusedExports": true,
         "missingExports": true,
-        "ignoreExports": []
+        "ignoreExports": ["tests/**/*.test.ts"]
       }
     ],
     "unused-imports/no-unused-imports": "error",
