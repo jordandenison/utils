@@ -19,6 +19,20 @@ Before you begin, make sure you have [Node.js](https://nodejs.org/) installed on
 3. Install the dependencies:  
    ```npm i```
 
+### Installation and usage with Docker
+
+1. Clone the repository:  
+  ```git clone https://github.com/jordandenison/utils.git```
+
+2. Navigate to the project directory:  
+   ```cd utils```
+
+3. Build the Docker image:  
+   ```docker build -t utils .```
+
+4. Run the Docker image:  
+   ```docker run -it utils```
+
 ### Usage in a project
 
 1. Install the package:  
