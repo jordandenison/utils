@@ -5,3 +5,7 @@ export const capitalizeFirstLetter = (str: string): string => {
 export const capitalizeAllFirstLetters = (str: string): string => {
   return str.split(' ').map(capitalizeFirstLetter).join(' ')
 }
+
+export const kebabCaseToCamelCase = (str: string): string => {
+  return str.replace(/-([a-z])/g, (_, match) => match.toUpperCase())
+}
