@@ -17,7 +17,7 @@ export const kebabCaseToCamelCase = (str: string): string => {
 }
 
 type Data = {
-  id: string
+  id: string | number
   updatedAt?: string
 }
 
@@ -43,7 +43,7 @@ export const isDataNewer = <S extends Data>(existingData: S, newData: S): boolea
 export const isDateValid = (dateString: string) => !isNaN(Date.parse(dateString))
 
 export const mergeData = <S extends Data>(existingData: Array<S>, newData: S | Array<S>): Array<S> => {
-  const dataMap: Record<string, S> = Object.fromEntries(existingData.map((item) => [item.id, item]))
+  const dataMap: Record<string | number, S> = Object.fromEntries(existingData.map((item) => [item.id, item]))
 
   const newDataArray = Array.isArray(newData) ? newData : [newData]
 
@@ -61,11 +61,8 @@ export const mergeData = <S extends Data>(existingData: Array<S>, newData: S | A
   return Object.values(dataMap)
 }
 
-export const removeData = <S extends { id: string }>(
-  existingData: Array<S>,
-  newData: S | Array<S>
-): Array<S> => {
-  const newDataIds: Record<string, boolean> = {}
+export const removeData = <S extends Data>(existingData: Array<S>, newData: S | Array<S>): Array<S> => {
+  const newDataIds: Record<string | number, boolean> = {}
 
   if (Array.isArray(newData)) {
     for (const item of newData) {

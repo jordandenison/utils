@@ -1,14 +1,23 @@
 # Changelog
 
-## [1.0.0] - 2023-09-16
+## [1.0.2] - 2023-09-14
+
+### Changed
+- Refactored the `Data` type and `mergeData`/`removeData` functions to support both number and string IDs
+
+## [1.0.1] - 2023-09-13
+
+### Changed
+- Updated the README file
+
+## [1.0.0] - 2023-09-12
 
 ### Added
-- Implemented `capitalizeFirstLetter` method to capitalize the first letter of a string.
-- Implemented `capitalizeAllFirstLetters` method to capitalize the first letter of each word in a string.
-- Implemented `delay` method to create a promise that resolves after a specified timeout.
-- Implemented `kebabCaseToCamelCase` method to convert a kebab-case string to camelCase.
-- Defined a `Data` type which includes an 'id' and an optional 'updatedAt' property.
-- Implemented `isDataNewer` method to compare the 'updatedAt' properties of two data objects and determine if one is newer.
-- Implemented `isDateValid` method to validate whether a given string is a valid date.
-- Implemented `mergeData` method to merge new data into an existing data array based on the 'id' property, updating existing items if the new data is newer.
-- Implemented `removeData` method to remove specified data items from an existing data array based on the 'id' property.
+- `capitalizeFirstLetter` function to capitalize the first letter of a string
+- `capitalizeAllFirstLetters` function to capitalize the first letter of each word in a string
+- `delay` function to create a delay before proceeding
+- `kebabCaseToCamelCase` function to convert a kebab-case string to camelCase
+- `isDataNewer` function to compare update timestamps of data objects
+- `isDateValid` function to validate date strings
+- `mergeData` function to merge new data into an existing data set, with newer data replacing older data
+- `removeData` function to remove specified data from a data set
