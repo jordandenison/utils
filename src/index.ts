@@ -9,3 +9,7 @@ export const capitalizeAllFirstLetters = (str: string): string => {
 export const kebabCaseToCamelCase = (str: string): string => {
   return str.replace(/-([a-z])/g, (_, match) => match.toUpperCase())
 }
+
+export const isDateValid = (date: Date) => {
+  return date instanceof Date && !isNaN(date.getTime())
+}
