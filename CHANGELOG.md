@@ -1,16 +1,16 @@
 # Changelog
 
-## [1.0.2] - 2023-09-14
+## [1.0.2] - 2023-09-16
 
 ### Changed
 - Refactored the `Data` type and `mergeData`/`removeData` functions to support both number and string IDs
 
-## [1.0.1] - 2023-09-13
+## [1.0.1] - 2023-09-16
 
 ### Changed
 - Updated the README file
 
-## [1.0.0] - 2023-09-12
+## [1.0.0] - 2023-09-16
 
 ### Added
 - `capitalizeFirstLetter` function to capitalize the first letter of a string
