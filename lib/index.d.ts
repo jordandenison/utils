@@ -1,4 +1,11 @@
 export declare const capitalizeFirstLetter: (str: string) => string;
 export declare const capitalizeAllFirstLetters: (str: string) => string;
 export declare const kebabCaseToCamelCase: (str: string) => string;
-export declare const isDateValid: (date: Date) => boolean;
+type Data = {
+    id: string;
+    updatedAt?: string;
+};
+export declare const isDataNewer: <S extends Data>(existingData: S, newData: S) => boolean;
+export declare const isDateValid: (dateString: string) => boolean;
+export declare const mergeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
+export {};

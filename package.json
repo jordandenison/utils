@@ -9,7 +9,7 @@
     "format": "prettier --ignore-path .gitignore --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "eslint --fix --ignore-path .gitignore --ext .ts,.tsx src tests --report-unused-disable-directives --max-warnings 0 --cache --cache-strategy content",
     "prepublishOnly": "npm run build",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --no-cache"
   },
   "repository": {
     "type": "git",
