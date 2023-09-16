@@ -36,11 +36,11 @@ Before you begin, make sure you have [Node.js](https://nodejs.org/) installed on
 ### Usage in a project
 
 1. Install the package:  
-  ```npm i https://github.com/jordandenison/utils.git```
+  ```npm i denisonweb-utils```
 
 2. Example usage  
    ```javascript
-    import { capitalizeFirstLetter } from 'utils';
+    import { capitalizeFirstLetter } from 'denisonweb-utils';
 
     const result = capitalizeFirstLetter('hello');
     console.log(result); // Outputs: "Hello"

@@ -1,5 +1,5 @@
 {
-  "name": "utils",
+  "name": "denisonweb-utils",
   "version": "1.0.0",
   "description": "A robust collection of JavaScript/TypeScript utility functions.",
   "main": "lib/index.js",
