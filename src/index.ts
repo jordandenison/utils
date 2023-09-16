@@ -6,6 +6,12 @@ export const capitalizeAllFirstLetters = (str: string): string => {
   return str.split(' ').map(capitalizeFirstLetter).join(' ')
 }
 
+export const delay = (timeout: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout)
+  })
+}
+
 export const kebabCaseToCamelCase = (str: string): string => {
   return str.replace(/-([a-z])/g, (_, match) => match.toUpperCase())
 }

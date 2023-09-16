@@ -1,5 +1,6 @@
 export declare const capitalizeFirstLetter: (str: string) => string;
 export declare const capitalizeAllFirstLetters: (str: string) => string;
+export declare const delay: (timeout: number) => Promise<void>;
 export declare const kebabCaseToCamelCase: (str: string) => string;
 type Data = {
     id: string;
