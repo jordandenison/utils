@@ -8,4 +8,7 @@ type Data = {
 export declare const isDataNewer: <S extends Data>(existingData: S, newData: S) => boolean;
 export declare const isDateValid: (dateString: string) => boolean;
 export declare const mergeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
+export declare const removeData: <S extends {
+    id: string;
+}>(existingData: S[], newData: S | S[]) => S[];
 export {};

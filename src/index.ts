@@ -54,3 +54,20 @@ export const mergeData = <S extends Data>(existingData: Array<S>, newData: S | A
 
   return Object.values(dataMap)
 }
+
+export const removeData = <S extends { id: string }>(
+  existingData: Array<S>,
+  newData: S | Array<S>
+): Array<S> => {
+  const newDataIds: Record<string, boolean> = {}
+
+  if (Array.isArray(newData)) {
+    for (const item of newData) {
+      newDataIds[item.id] = true
+    }
+  } else {
+    newDataIds[newData.id] = true
+  }
+
+  return existingData.filter((item) => !newDataIds[item.id])
+}
