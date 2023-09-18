@@ -6,6 +6,27 @@ export const capitalizeAllFirstLetters = (str: string): string => {
   return str.split(' ').map(capitalizeFirstLetter).join(' ')
 }
 
+const compareTimeWithCurrentInputRegExp = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/
+export const compareTimeWithCurrent = (time: string): 'before' | 'after' | 'invalid input' => {
+  try {
+    if (!compareTimeWithCurrentInputRegExp.test(time)) {
+      return 'invalid input'
+    }
+
+    const [hours, minutes] = time.split(':').map(Number)
+    const now = new Date()
+    const inputTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes)
+
+    if (inputTime.getTime() > now.getTime()) {
+      return 'after'
+    } else {
+      return 'before'
+    }
+  } catch (error) {
+    return 'invalid input'
+  }
+}
+
 export const delay = (timeout: number): Promise<void> => {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout)

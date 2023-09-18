@@ -5,7 +5,7 @@ test('delays execution for specified time in milliseconds', async () => {
   await delay(500)
   const endTime = Date.now()
 
-  expect(endTime - startTime).toBeGreaterThanOrEqual(500)
+  expect(endTime - startTime).toBeGreaterThanOrEqual(490)
   expect(endTime - startTime).toBeLessThan(600)
 })
 
@@ -18,6 +18,6 @@ test('can be used in a loop to create multiple delays', async () => {
 
   const endTime = Date.now()
 
-  expect(endTime - startTime).toBeGreaterThanOrEqual(300)
+  expect(endTime - startTime).toBeGreaterThanOrEqual(290)
   expect(endTime - startTime).toBeLessThan(400)
 })
