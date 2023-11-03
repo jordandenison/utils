@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.7] - 2023-11-03
+
+### Added
+- `hasDuplicates` function to determine if an array of objects has objects with a duplicate property value
+
 ## [1.0.2] - 2023-09-16
 
 ### Changed

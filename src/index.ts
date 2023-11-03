@@ -33,6 +33,20 @@ export const delay = (timeout: number): Promise<void> => {
   })
 }
 
+// eslint-disable-next-line
+export const hasDuplicates = (array: Record<string, any>[], propertyName: string): boolean => {
+  const valueMap = new Map()
+
+  for (const item of array) {
+    if (valueMap.has(item[propertyName])) {
+      return true
+    }
+    valueMap.set(item[propertyName], true)
+  }
+
+  return false
+}
+
 export const kebabCaseToCamelCase = (str: string): string => {
   return str.replace(/-([a-z])/g, (_, match) => match.toUpperCase())
 }
