@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2023-11-26
+
+### Added
+- `isValidWebUrl` function to determine if a url is a valid web url
+
 ## [1.0.7] - 2023-11-03
 
 ### Added

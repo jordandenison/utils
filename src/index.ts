@@ -77,6 +77,29 @@ export const isDataNewer = <S extends Data>(existingData: S, newData: S): boolea
 
 export const isDateValid = (dateString: string) => !isNaN(Date.parse(dateString))
 
+interface IsValidWebUrlOptions {
+  requireProtocol?: boolean
+}
+
+export const isValidWebUrl = (urlString: string, options?: IsValidWebUrlOptions) => {
+  try {
+    if (!urlString.includes('://') && !options?.requireProtocol) {
+      urlString = 'http://' + urlString
+    }
+
+    const url = new URL(urlString)
+
+    // Check for valid web URL protocol (http or https) and top-level domain
+    if (!['http:', 'https:'].includes(url.protocol) || !url.hostname.includes('.')) {
+      return false
+    }
+
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
 export const mergeData = <S extends Data>(existingData: Array<S>, newData: S | Array<S>): Array<S> => {
   const dataMap: Record<string | number, S> = Object.fromEntries(existingData.map((item) => [item.id, item]))
 

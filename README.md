@@ -33,6 +33,9 @@ Before you begin, make sure you have [Node.js](https://nodejs.org/) installed on
 4. Run the Docker image:  
    ```docker run --name utils -v $(pwd):/usr/src/app -it utils```
 
+5. Subsequent runs:  
+   ```docker start utils && docker attach utils```
+
 ### Usage in a project
 
 1. Install the package:  
@@ -48,8 +51,8 @@ Before you begin, make sure you have [Node.js](https://nodejs.org/) installed on
 
 ## Running Tests
 
-To run the tests, use the following command in the project directory:  
-```npm test```
+The tests will run automatically when starting the Docker container, but if you have nodejs installed you can use the following command in the project directory:  
+   ```npm test```
 
 ## Contribution
 
