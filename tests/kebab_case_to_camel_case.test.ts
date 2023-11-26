@@ -1,25 +1,27 @@
 import { kebabCaseToCamelCase } from '../src'
 
-test('converts kebab-case to camelCase', async () => {
-  const result = kebabCaseToCamelCase('hello-world')
+describe('kebabCaseToCamelCase', () => {
+  test('converts kebab-case to camelCase', async () => {
+    const result = kebabCaseToCamelCase('hello-world')
 
-  expect(result).toBe('helloWorld')
-})
+    expect(result).toBe('helloWorld')
+  })
 
-test('converts multiple kebab-case elements to camelCase', async () => {
-  const result = kebabCaseToCamelCase('foo-bar-baz-qux')
+  test('converts multiple kebab-case elements to camelCase', async () => {
+    const result = kebabCaseToCamelCase('foo-bar-baz-qux')
 
-  expect(result).toBe('fooBarBazQux')
-})
+    expect(result).toBe('fooBarBazQux')
+  })
 
-test('does not change strings without hyphens', async () => {
-  const result = kebabCaseToCamelCase('hello')
+  test('does not change strings without hyphens', async () => {
+    const result = kebabCaseToCamelCase('hello')
 
-  expect(result).toBe('hello')
-})
+    expect(result).toBe('hello')
+  })
 
-test('handles empty strings correctly', async () => {
-  const result = kebabCaseToCamelCase('')
+  test('handles empty strings correctly', async () => {
+    const result = kebabCaseToCamelCase('')
 
-  expect(result).toBe('')
+    expect(result).toBe('')
+  })
 })

@@ -11,83 +11,85 @@ const obj4WithNewDate = { id: 4, updatedAt: '2023-01-01T13:00:00Z' }
 const obj5 = { id: 5, updatedAt: '2023-01-01T11:00:00Z' }
 const obj6 = { id: 6, updatedAt: '2023-01-01T12:00:00Z' }
 
-test('removes a single item with number ID with the same updatedAt time', () => {
-  const existingData = [obj4, obj5]
-  const newData = obj4
+describe('removeData', () => {
+  test('removes a single item with number ID with the same updatedAt time', () => {
+    const existingData = [obj4, obj5]
+    const newData = obj4
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj5])
-})
+    expect(result).toEqual([obj5])
+  })
 
-test('removes a single item with number ID with a different updatedAt time', () => {
-  const existingData = [obj4, obj5]
-  const newData = obj4WithNewDate
+  test('removes a single item with number ID with a different updatedAt time', () => {
+    const existingData = [obj4, obj5]
+    const newData = obj4WithNewDate
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj5])
-})
+    expect(result).toEqual([obj5])
+  })
 
-test('removes multiple items with number IDs', () => {
-  const existingData = [obj4, obj5]
-  const newData = [obj4WithNewDate, obj5]
+  test('removes multiple items with number IDs', () => {
+    const existingData = [obj4, obj5]
+    const newData = [obj4WithNewDate, obj5]
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([])
-})
+    expect(result).toEqual([])
+  })
 
-test('does not remove any items with number IDs if newData is not found in the existing data', () => {
-  const existingData = [obj4, obj5]
-  const newData = obj6
+  test('does not remove any items with number IDs if newData is not found in the existing data', () => {
+    const existingData = [obj4, obj5]
+    const newData = obj6
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj4, obj5])
-})
+    expect(result).toEqual([obj4, obj5])
+  })
 
-test('handles removal correctly with mixed types of IDs', () => {
-  const existingData = [obj1, obj4]
-  const newData = [obj1WithNewDate, obj4WithNewDate]
+  test('handles removal correctly with mixed types of IDs', () => {
+    const existingData = [obj1, obj4]
+    const newData = [obj1WithNewDate, obj4WithNewDate]
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([])
-})
+    expect(result).toEqual([])
+  })
 
-test('removes a single item', () => {
-  const existingData = [obj1, obj2, obj3]
-  const newData = obj2
+  test('removes a single item', () => {
+    const existingData = [obj1, obj2, obj3]
+    const newData = obj2
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj1, obj3])
-})
+    expect(result).toEqual([obj1, obj3])
+  })
 
-test('removes a single item with a new date', () => {
-  const existingData = [obj1, obj2, obj3]
-  const newData = obj2WithNewDate
+  test('removes a single item with a new date', () => {
+    const existingData = [obj1, obj2, obj3]
+    const newData = obj2WithNewDate
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj1, obj3])
-})
+    expect(result).toEqual([obj1, obj3])
+  })
 
-test('removes multiple items', () => {
-  const existingData = [obj1, obj2, obj3]
-  const newData = [obj1WithNewDate, obj3WithNewDate]
+  test('removes multiple items', () => {
+    const existingData = [obj1, obj2, obj3]
+    const newData = [obj1WithNewDate, obj3WithNewDate]
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([obj2])
-})
+    expect(result).toEqual([obj2])
+  })
 
-test('returns an empty array if all items are removed', () => {
-  const existingData = [obj1, obj2]
-  const newData = [obj1WithNewDate, obj2WithNewDate]
+  test('returns an empty array if all items are removed', () => {
+    const existingData = [obj1, obj2]
+    const newData = [obj1WithNewDate, obj2WithNewDate]
 
-  const result = removeData(existingData, newData)
+    const result = removeData(existingData, newData)
 
-  expect(result).toEqual([])
+    expect(result).toEqual([])
+  })
 })

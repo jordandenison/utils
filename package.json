@@ -1,6 +1,6 @@
 {
   "name": "denisonweb-utils",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "A robust collection of JavaScript/TypeScript utility functions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -46,6 +46,7 @@
   "jest": {
     "testMatch": [
       "**/tests/**/*.test.ts"
-    ]
+    ],
+    "verbose": true
   }
 }
