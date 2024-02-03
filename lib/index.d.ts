@@ -10,6 +10,10 @@ type Data = {
 };
 export declare const isDataNewer: <S extends Data>(existingData: S, newData: S) => boolean;
 export declare const isDateValid: (dateString: string) => boolean;
+interface IsValidWebUrlOptions {
+    requireProtocol?: boolean;
+}
+export declare const isValidWebUrl: (urlString: string, options?: IsValidWebUrlOptions) => boolean;
 export declare const mergeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
 export declare const removeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
 export {};
