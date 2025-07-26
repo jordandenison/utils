@@ -100,21 +100,26 @@ export const isValidWebUrl = (urlString: string, options?: IsValidWebUrlOptions)
   }
 }
 
-export const mergeData = <S extends Data>(existingData: Array<S>, newData: S | Array<S>): Array<S> => {
-  const dataMap: Record<string | number, S> = Object.fromEntries(existingData.map((item) => [item.id, item]))
+export const mergeData = <S extends { id: string }>(
+  existingData: S[],
+  newData: S | S[]
+): S[] => {
+  const dataMap = Object.fromEntries(
+    existingData.map(item => [item.id, { ...item }])
+  ) as Record<string, S>
 
-  const newDataArray = Array.isArray(newData) ? newData : [newData]
+  const incoming = Array.isArray(newData) ? newData : [newData]
 
-  newDataArray.forEach((newItem: S) => {
-    const existingItem = dataMap[newItem.id]
-    if (existingItem) {
-      if (isDataNewer(existingItem, newItem)) {
-        Object.assign(existingItem, newItem)
+  for (const newItem of incoming) {
+    const oldItem = dataMap[newItem.id]
+    if (oldItem) {
+      if (isDataNewer(oldItem, newItem)) {
+        dataMap[newItem.id] = { ...oldItem, ...newItem }
       }
     } else {
-      dataMap[newItem.id] = newItem
+      dataMap[newItem.id] = { ...newItem }
     }
-  })
+  }
 
   return Object.values(dataMap)
 }
