@@ -102,11 +102,12 @@ export const isValidWebUrl = (urlString: string, options?: IsValidWebUrlOptions)
 
 export const mergeData = <S extends { id: string }>(
   existingData: S[],
-  newData: S | S[]
+  newData: S | S[],
+  options?: {
+    preserveOld?: boolean
+  }
 ): S[] => {
-  const dataMap = Object.fromEntries(
-    existingData.map(item => [item.id, { ...item }])
-  ) as Record<string, S>
+  const dataMap = Object.fromEntries(existingData.map((item) => [item.id, { ...item }])) as Record<string, S>
 
   const incoming = Array.isArray(newData) ? newData : [newData]
 
@@ -114,7 +115,7 @@ export const mergeData = <S extends { id: string }>(
     const oldItem = dataMap[newItem.id]
     if (oldItem) {
       if (isDataNewer(oldItem, newItem)) {
-        dataMap[newItem.id] = { ...oldItem, ...newItem }
+        dataMap[newItem.id] = options?.preserveOld ? { ...oldItem, ...newItem } : { ...newItem }
       }
     } else {
       dataMap[newItem.id] = { ...newItem }

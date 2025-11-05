@@ -19,14 +19,14 @@ describe('mergeData', () => {
   test('preserves extra fields on existing item when merging a newer item', () => {
     const existingData = [obj1Extra]
     const newData = [obj1WithNewDate]
-    const result = mergeData(existingData, newData)
+    const result = mergeData(existingData, newData, { preserveOld: true })
     expect(result).toEqual([{ id: '1', updatedAt: '2023-01-01T12:00:00Z', hasBot: true }])
   })
 
   test('merges new fields into existing item when incoming adds properties', () => {
     const existingData = [{ id: 'X', updatedAt: '2023-01-01T10:00:00Z', extraField: 'foo' }]
     const newData = [{ id: 'X', updatedAt: '2023-01-01T11:00:00Z', newField: 'bar' }]
-    const result = mergeData(existingData, newData)
+    const result = mergeData(existingData, newData, { preserveOld: true })
     expect(result).toEqual([
       {
         id: 'X',
@@ -69,7 +69,7 @@ describe('mergeData', () => {
     const existingData = [obj1Extra, obj4]
     const newData = [obj1WithNewDate, obj4WithNewDate]
 
-    const result = mergeData(existingData, newData)
+    const result = mergeData(existingData, newData, { preserveOld: true })
     expect(result).toEqual([{ id: '1', updatedAt: '2023-01-01T12:00:00Z', hasBot: true }, obj4WithNewDate])
   })
 
@@ -77,7 +77,7 @@ describe('mergeData', () => {
     const existingData = [obj1Extra, obj2]
     const newData = [obj1WithNewDate, obj3]
 
-    const result = mergeData(existingData, newData)
+    const result = mergeData(existingData, newData, { preserveOld: true })
     expect(result).toEqual([{ id: '1', updatedAt: '2023-01-01T12:00:00Z', hasBot: true }, obj2, obj3])
   })
 
@@ -110,5 +110,39 @@ describe('mergeData', () => {
     const newData = [obj2WithInvalidDate]
 
     expect(() => mergeData(existingData, newData)).toThrow(Error)
+  })
+
+  test('preserveOld: true - preserves extra frontend-only fields', () => {
+    const existingData = [obj1Extra]
+    const newData = [obj1WithNewDate]
+
+    const result = mergeData(existingData, newData, { preserveOld: true })
+    expect(result).toEqual([{ id: '1', updatedAt: '2023-01-01T12:00:00Z', hasBot: true }])
+  })
+
+  test('preserveOld: false - drops extra fields from old item', () => {
+    const existingData = [obj1Extra]
+    const newData = [obj1WithNewDate]
+
+    const result = mergeData(existingData, newData, { preserveOld: false })
+    expect(result).toEqual([{ id: '1', updatedAt: '2023-01-01T12:00:00Z' }])
+  })
+
+  test('preserveOld: false - full replacement of object if newer', () => {
+    const existingData = [{ id: 'Z', updatedAt: '2023-01-01T08:00:00Z', custom: 'old' }]
+    const newData = [{ id: 'Z', updatedAt: '2023-01-01T12:00:00Z', fresh: 'new' }]
+
+    const result = mergeData(existingData, newData, { preserveOld: false })
+    expect(result).toEqual([{ id: 'Z', updatedAt: '2023-01-01T12:00:00Z', fresh: 'new' }])
+  })
+
+  test('preserveOld: true - merges newer fields with extra UI props', () => {
+    const existingData = [{ id: '1', updatedAt: '2023-01-01T10:00:00Z', hasBot: true }]
+    const newData = [{ id: '1', updatedAt: '2023-01-01T12:00:00Z', platform: 'discord' }]
+
+    const result = mergeData(existingData, newData, { preserveOld: true })
+    expect(result).toEqual([
+      { id: '1', updatedAt: '2023-01-01T12:00:00Z', hasBot: true, platform: 'discord' }
+    ])
   })
 })

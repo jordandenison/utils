@@ -14,6 +14,10 @@ interface IsValidWebUrlOptions {
     requireProtocol?: boolean;
 }
 export declare const isValidWebUrl: (urlString: string, options?: IsValidWebUrlOptions) => boolean;
-export declare const mergeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
+export declare const mergeData: <S extends {
+    id: string;
+}>(existingData: S[], newData: S | S[], options?: {
+    preserveOld?: boolean;
+}) => S[];
 export declare const removeData: <S extends Data>(existingData: S[], newData: S | S[]) => S[];
 export {};
